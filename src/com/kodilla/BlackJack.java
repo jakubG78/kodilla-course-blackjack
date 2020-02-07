@@ -1,8 +1,12 @@
 package com.kodilla;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -10,6 +14,8 @@ import javafx.stage.Stage;
 public class BlackJack extends Application {
 
     private Image imageback = new Image("file:resources/table.png");
+    private Image card = new Image("file:resources/cards/9s.png");
+    private FlowPane cards = new FlowPane(Orientation.HORIZONTAL);
 
     public static void main(String[] args) {
         launch(args);
@@ -22,6 +28,17 @@ public class BlackJack extends Application {
         Background background = new Background(backgroundImage);
 
         GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
+        grid.setHgap(5.5);
+        grid.setVgap(5.5);
+        grid.setBackground(background);
+
+        ImageView img = new ImageView(card);
+        cards.getChildren().add(img);
+
+        grid.add(cards, 0, 0, 3, 1);
+
         grid.setBackground(background);
 
         Scene scene = new Scene(grid, 1600, 900, Color.BLACK);
